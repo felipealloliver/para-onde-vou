@@ -19,6 +19,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "apisauce": "^0.14.3",
     "expo": "^27.0.1",
     "navigationbar-react-native": "0.0.3",
     "react": "16.3.1",
@@ -26,6 +27,7 @@
     "react-native-elements": "^0.19.1",
     "react-native-navbar": "^2.1.0",
     "react-native-navigation-bar": "^0.2.1",
+    "react-native-overlay": "^0.5.0",
     "react-navigation": "^2.0.1",
     "react-router": "^4.2.0"
   }

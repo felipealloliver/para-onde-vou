@@ -1,89 +1,130 @@
 import React from 'react';
+import NavigationBar from 'navigationbar-react-native';
+import ws from '../services/rest-para-onde-vou';
+
 import { StyleSheet, View, ScrollView, StatusBar, TouchableOpacity, Picker } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { TextInput } from 'react-native-gesture-handler';
-import NavigationBar from 'navigationbar-react-native';
-import { 
-  Button,
-  Card,
-  Divider,
-  FormInput,
-  FormLabel,
-  FormValidationMessage,
-  Header,
-  Icon,
-  PricingCard,
-  SocialIcon,
-  Text
- } from 'react-native-elements';
+import { CheckBox, Button, Card, Divider, FormInput, FormLabel, FormValidationMessage, Header, Icon, PricingCard, SocialIcon, Text } from 'react-native-elements';
 
- const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      paddingTop: 30,
-      backgroundColor: '#fff',
-      //alignItems: 'center',
-      //justifyContent: 'center',
-    },
-  
-    card: {
-      backgroundColor: 'red',
-    },
-  });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 30,
+    backgroundColor: '#fff'
+  },
 
+  card: {
+    backgroundColor: 'red',
+  },
+});
 
-const Login = () => (
-    <ScrollView style={styles.container}>
+export default class Login extends React.Component {
+  state = {
+    saveSession: false,
+    errorMessage: null,
+    inputEmail: '',
+    inputSenha: '',
+  };
+
+  static navigationOptions = { title: '', header: null };
+
+  render() {
+    const { navigate } = this.props.navigation;
+    return (
+      <ScrollView style={styles.container}>
+      <View style={{
+          padding: 0,
+          marginTop: 30,
+        }}>
         <Icon
-          name='location-on'
-          type='materialIcons'
-          color='red'
-          size={100}
-        />
+            name='location-on'
+            type='materialIcons'
+            color='red'
+            size={100} />
 
-        <Text h3 style={{fontWeight: 'bold', textAlign: 'center'}}>PARA ONDE VOU?</Text>
+        <Text h2 style={{ fontWeight: 'bold', textAlign: 'center' }}>PARA ONDE VOU?</Text>
+      </View>
+      <View style={{ marginTop: 20, position: 'relative', }}> 
+        <View style={{ alignItems: 'center', marginTop: 20, position: 'relative', zIndex: 2}}>
+            <Icon 
+                  reverse
+                  name='lock'
+                  type='entypo'
+                  color='rgb(229,229,232)'
+                  size={25}
+                  iconStyle={{ color: 'grey', alignSelf: 'center', }}
+                  onPress={() => console.log('hello')} 
+                />
+        </View> 
+        <View style={{ 
+          backgroundColor: 'rgb(6,90,157)', 
+          borderRadius: 10, 
+          marginLeft: 30, 
+          marginRight: 30, 
+          marginTop: -40,
+          position: 'relative', zIndex: 1
+          }}>
+          <FormInput 
+            containerStyle={{ marginTop: 50, padding: (5,5,5,5), backgroundColor: '#FFF', borderRadius: 5}}
+            inputStyle={{ color: '#000', fontSize: 20, paddingLeft: 15 }} 
+            placeholderTextColor='#BDBDBD' 
+            underlineColorAndroid='rgba(0,0,0,0)'
+            placeholder='E-Mail' shake={true}
+            onChangeText={(text) => this.setState({inputEmail: text})}>
+          </FormInput>
+          <FormInput 
+            secureTextEntry={true}
+            containerStyle={{ marginTop: 10, padding: (5,5,5,5), backgroundColor: '#FFF', borderRadius: 5}}
+            inputStyle={{ color: '#000', fontSize: 20, paddingLeft: 15 }} 
+            placeholderTextColor='#BDBDBD' 
+            underlineColorAndroid='rgba(0,0,0,0)'
+            placeholder='Senha' shake={true}
+            onChangeText={(text) => this.setState({inputSenha: text})}
+          >
+          </FormInput>
+          <View style={{marginTop: 10, marginBottom: 20}}>
+            <Button
+              large
+              title='Entrar'
+              backgroundColor='rgb(0,185,230)'
+              borderRadius={5}
+              onPress={ this.validateLogin }
+            />
+          </View>
+        </View>
+      </View>
 
-        <Icon
-          reverse
-          name='lock'
-          type='entypo'
-          color='rgb(229,229,232)'
-          size={25}
-          iconStyle={{color:'grey'}}
-          onPress={() => console.log('hello')}
-        />
+      <CheckBox
+        center
+        containerStyle={{backgroundColor: '#FFF', borderWidth: 0}}
+        title='Lembrar meus dados de acesso.'
+        iconType='material'
+        checkedIcon='done'
+        uncheckedIcon='clear'
+        checkedColor='green'
+        onPress={() => this.setState({checked: !this.state.saveSession})}
+        checked={this.state.saveSession}
+      />
 
-        <Card title='Login' titleStyle={{color:'#fff', fontWeight: 'bold'}} containerStyle={{backgroundColor: 'rgb(6,90,157)', borderRadius:20}}>
-          <FormLabel labelStyle={{color:'#fff', fontWeight: 'bold'}}>EMAIL</FormLabel>
-          <FormInput inputStyle={{color:'#fff'}} placeholderTextColor='#fff' placeholder='Digite seu e-mail' shake={true}></FormInput>
+      <Text style={{ textAlign: 'center', marginBottom: 10 }}>Não sei a minha senha</Text>
+      <Text style={{ textAlign: 'center' }}>Você é novo? Cadastre-se</Text>
 
-          <FormLabel labelStyle={{color:'#fff', fontWeight: 'bold'}}>SENHA</FormLabel>
-          <FormInput inputStyle={{color:'#fff'}} placeholderTextColor='#fff' placeholder='Digite sua senha' shake={true}></FormInput>
-
-          <Text></Text>
-          
-          <Button
-            large
-            iconRight={{name: 'check', type: 'entypo'}}
-            title='Entrar' 
-            backgroundColor='rgb(0,185,230)'
-            borderRadius= {10}
-            onPress={() => this.props.navigation.navigate('OndeEstouRoute')}
-          />        
-          <Text></Text>
-          <Text></Text>
-        </Card>
-
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-
-        <Text style={{textAlign: 'center'}}>Não sei a minha senha</Text>
-        <Text style={{textAlign: 'center'}}>Você é novo? Cadastre-se</Text>
-
-        <Text></Text>
-        
       </ScrollView>
-);
+    )
+  };
 
-export default Login;
+  validateLogin = () => {
+     const { navigate } = this.props.navigation;
+     const response = ws.post('/usuario/autenticar', {
+       email: this.state.inputEmail,
+       senha: this.state.inputSenha
+       });
+      
+     if (response.ok) {
+     navigate('OndeEstouRoute');
+    } else {
+      this.setState({ errorMessage: 'erro' });
+    }
+  };
+}

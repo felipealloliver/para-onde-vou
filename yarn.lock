@@ -716,6 +716,13 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
+apisauce@^0.14.3:
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/apisauce/-/apisauce-0.14.3.tgz#0a2dd11d883934c33e31f9ddfc612805490a7ba8"
+  dependencies:
+    axios "^0.16.2"
+    ramda "^0.24.1"
+
 append-transform@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/append-transform/-/append-transform-0.4.0.tgz#d76ebf8ca94d276e247a36bad44a4b74ab611991"
@@ -906,7 +913,7 @@ aws4@^1.6.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.7.0.tgz#d4d0e9b9dbfca77bf08eeb0a8a471550fe39e289"
 
-axios@0.16.2:
+axios@0.16.2, axios@^0.16.2:
   version "0.16.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.16.2.tgz#ba4f92f17167dfbab40983785454b9ac149c3c6d"
   dependencies:
@@ -5462,6 +5469,10 @@ querystring@0.2.0, querystring@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
+ramda@^0.24.1:
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.24.1.tgz#c3b7755197f35b8dc3502228262c4c91ddb6b857"
+
 randomatic@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-3.0.0.tgz#d35490030eb4f7578de292ce6dfb04a91a128923"
@@ -5595,6 +5606,10 @@ react-native-navbar@^2.1.0:
 react-native-navigation-bar@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/react-native-navigation-bar/-/react-native-navigation-bar-0.2.1.tgz#e25e585742124040ff069a69a4445be83de77000"
+
+react-native-overlay@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-overlay/-/react-native-overlay-0.5.0.tgz#68d44e2d643d896414e78cbe87aa336d831b0614"
 
 react-native-safe-area-view@^0.7.0:
   version "0.7.0"

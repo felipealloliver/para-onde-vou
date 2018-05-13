@@ -31,11 +31,12 @@ import {
 
 const RootStack = createStackNavigator(
   {
-    LoginRoute: Login,
-    CadastroRoute: Cadastro,
-    OndeEstouRoute: OndeEstou,
+    LoginRoute: { screen: Login },
+    CadastroRoute: { screen: Cadastro },
+    OndeEstouRoute: { screen: OndeEstou },
   },
   {
-    initialRouteName: 'OndeEstouRoute',
+    headerMode: 'screen',
+    initialRouteName: 'LoginRoute'
   }
 );

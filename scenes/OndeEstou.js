@@ -1,23 +1,10 @@
 import React from 'react';
+import NavigationBar from 'navigationbar-react-native';
+
 import { Image, StyleSheet, View, ScrollView, StatusBar, TouchableOpacity, Picker } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { TextInput } from 'react-native-gesture-handler';
-import NavigationBar from 'navigationbar-react-native';
-import { 
-  Button,
-  Card,
-  Divider,
-  FormInput,
-  FormLabel,
-  FormValidationMessage,
-  Header,
-  Icon,
-  List,
-  ListItem,
-  PricingCard,
-  SocialIcon,
-  Text
- } from 'react-native-elements';
+import { Button, Card, Divider, FormInput, FormLabel, FormValidationMessage, Header, Icon, List, ListItem, PricingCard, SocialIcon, Text } from 'react-native-elements';
 
  const list = [
   {
@@ -42,7 +29,6 @@ import {
   },
 ]
  
-
  export default class OndeEstou extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
@@ -92,7 +78,7 @@ import {
             title='Ler QR CODE' 
             backgroundColor='rgb(0,185,230)'
             borderRadius={10}
-            onPress={() => navigate('Login')}
+            onPress={() => navigate('LoginRoute')}
           />
         </View>
       </ScrollView>
