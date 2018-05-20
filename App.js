@@ -22,6 +22,7 @@ import {
  import Login from './scenes/Login';
  import Cadastro from './scenes/Cadastro';
  import OndeEstou from './scenes/OndeEstou';
+ import ParaOndeVou from './scenes/ParaOndeVou';
 
  export default class App extends React.Component {
   render() {
@@ -34,6 +35,7 @@ const RootStack = createStackNavigator(
     LoginRoute: { screen: Login },
     CadastroRoute: { screen: Cadastro },
     OndeEstouRoute: { screen: OndeEstou },
+    ParaOndeVouRoute: { screen: ParaOndeVou },
   },
   {
     headerMode: 'screen',

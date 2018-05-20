@@ -90,6 +90,8 @@ export default class Login extends React.Component {
               backgroundColor='rgb(0,185,230)'
               borderRadius={5}
               onPress={ this.validateLogin }
+              //onPress={() => {this.validateLogin}}
+              //onPress={() => navigate('OndeEstouRoute')}
             />
           </View>
         </View>
@@ -108,23 +110,45 @@ export default class Login extends React.Component {
       />
 
       <Text style={{ textAlign: 'center', marginBottom: 10 }}>Não sei a minha senha</Text>
-      <Text style={{ textAlign: 'center' }}>Você é novo? Cadastre-se</Text>
+      <TouchableOpacity>
+        <Text style={{ textAlign: 'center' }} onPress={() => navigate('CadastroRoute')}>Você é novo? Cadastre-se</Text>
+      </TouchableOpacity>
 
       </ScrollView>
     )
   };
 
   validateLogin = () => {
-     const { navigate } = this.props.navigation;
-     const response = ws.post('/usuario/autenticar', {
-       email: this.state.inputEmail,
-       senha: this.state.inputSenha
-       });
-      
-     if (response.ok) {
-     navigate('OndeEstouRoute');
+    const { navigate } = this.props.navigation;
+    /*const response = ws.post('/usuario/autenticar', {
+      email: this.state.inputEmail,
+      senha: this.state.inputSenha
+    },
+    { 
+      header: {'Content-Type':'application/json'}
+    });
+         
+    if (response.ok) {
+      navigate('OndeEstouRoute');
     } else {
-      this.setState({ errorMessage: 'erro' });
-    }
+      console.log(response.status);
+      //this.setState({ errorMessage: 'erro' });
+      navigate('CadastroRoute');
+      console.log(this.state.inputEmail);
+      console.log(this.state.inputSenha);
+    }*/
+
+    const autenticar = fetch(ws.getBaseURL() + '/usuario/autenticar', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json','Content-Type': 'application/json'},
+      body: JSON.stringify({
+        email: this.state.inputEmail,
+        senha: this.state.inputSenha
+      })
+    }).then((response) => response.json()).then((responseData) => {
+      navigate('OndeEstouRoute');
+    }).catch((error) => {
+      console.log("Erro na autenticação!");
+    });
   };
 }
