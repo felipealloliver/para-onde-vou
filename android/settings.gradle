@@ -1,0 +1,3 @@
+rootProject.name = 'paraondevou'
+
+include ':app'
