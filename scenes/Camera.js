@@ -13,6 +13,7 @@ import {
   Text
  } from 'react-native-elements';
  //import QRCodeScanner from 'react-native-qrcode-scanner';
+ //import {Camera} from 'react-native-camera';
 
 const styles = StyleSheet.create({
     container: {
@@ -48,7 +49,7 @@ const list = [
     },
 ]
 
-export default class Camera extends React.Component {
+export default class CameraTeste extends React.Component {
     
     static navigationOptions = { title: 'Camera' };
 
@@ -63,6 +64,11 @@ export default class Camera extends React.Component {
                         color='red'
                         size={100} 
                     />
+                </View>
+                <View>
+                    <Camera>
+
+                    </Camera>
                 </View>
                 <View>
                     <Button 

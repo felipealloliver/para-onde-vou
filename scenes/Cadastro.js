@@ -80,14 +80,14 @@ export default class Cadastro extends React.Component {
         const { navigate } = this.props.navigation;
         const cadastrar = fetch(ws.getBaseURL() + '/usuario', {
             method: 'POST',
-            headers: { 'Accept': 'application/json','Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({
                 id: null,
                 email: this.state.inputEmail,
                 nome: this.state.inputNome,
                 senha: this.state.inputSenha
             })
-        }).then((response) => response.json()).then((responseStatus) => {
+        }).then((response) => response.json()).then((responseData) => {
             //console.log(responseData);
             navigate('OndeEstouRoute');
         }).then((error) => {
